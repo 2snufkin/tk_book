@@ -34,3 +34,8 @@ A successful collaboration workflow can greatly enhance project efficiency and m
 ### Protecting Branches
 
 To maintain code quality and prevent accidental changes, consider implementing these branch protection rules:
+
+- Require Pull Request Reviews
+- Require Status Checks
+- Branch Protection Rules
+- Require Linear History
