@@ -1,0 +1,36 @@
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to main branch (you can change this to the branch you want)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the latest version of the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js environment to build Docusaurus
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'  # Ensure your Node.js version matches your project setup
+
+      # Step 3: Install dependencies (yarn or npm depending on your project)
+      - name: Install dependencies
+        run: yarn install  # or "npm install"
+
+      # Step 4: Build the Docusaurus static site
+      - name: Build the site
+        run: yarn build  # or "npm run build"
+
+      # Step 5: Deploy the static site to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
+          publish_dir: ./build  # The directory where Docusaurus builds the static site
