@@ -1,4 +1,4 @@
-# User Rights and Conditions Documentation
+# User Rights
 
 This document provides guidelines on how to conditionally perform actions based on user rights within the system. 
 ## Tables in the DB

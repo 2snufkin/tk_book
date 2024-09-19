@@ -1,4 +1,4 @@
-# EnceinteManager Methods
+# EnceinteManager 
 
 - **findByIdManager**: Retrieves an `Enceinte` object by its ID.
 
