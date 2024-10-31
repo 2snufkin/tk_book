@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-Tumorotek/Packages/webapp/FicheImportTemplate" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">FicheImportTemplate | TkBook</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://2snufkin.github.io/tk_book/img/favicon.png"><meta data-rh="true" name="twitter:image" content="https://2snufkin.github.io/tk_book/img/favicon.png"><meta data-rh="true" property="og:url" content="https://2snufkin.github.io/tk_book/Tumorotek/Packages/webapp/FicheImportTemplate"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="FicheImportTemplate | TkBook"><meta data-rh="true" name="description" content="This class manages the import template functionality in the application. It handles the creation, editing, and management of import templates that define how external data should be imported into the system. It provides features for:"><meta data-rh="true" property="og:description" content="This class manages the import template functionality in the application. It handles the creation, editing, and management of import templates that define how external data should be imported into the system. It provides features for:"><link data-rh="true" rel="icon" href="/tk_book/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://2snufkin.github.io/tk_book/Tumorotek/Packages/webapp/FicheImportTemplate"><link data-rh="true" rel="alternate" href="https://2snufkin.github.io/tk_book/Tumorotek/Packages/webapp/FicheImportTemplate" hreflang="en"><link data-rh="true" rel="alternate" href="https://2snufkin.github.io/tk_book/Tumorotek/Packages/webapp/FicheImportTemplate" hreflang="x-default"><link rel="stylesheet" href="/tk_book/assets/css/styles.5aa24b33.css">
+<script src="/tk_book/assets/js/runtime~main.14dfe2f6.js" defer="defer"></script>
+<script src="/tk_book/assets/js/main.f9001bd4.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/tk_book/"><div class="navbar__logo"><img src="/tk_book/img/favicon.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/tk_book/img/favicon.png" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">TK Book</b></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tk_book/Best Practice/Best Practices In Java Development">Best Practice</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tk_book/Errors/Accessing Inaccessible Attribute">Errors</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tk_book/Java &amp; Spring/Comparing Objects">Java &amp; Spring</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tk_book/Libraries/Apache Poi - Performance">Libraries</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tk_book/Security/Dependencies">Security</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/tk_book/Tumorotek/General/Code Formatting">Tumorotek</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/tk_book/Tumorotek/General/Code Formatting">General</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/tk_book/Tumorotek/How To/PDF Generation">How To</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/tk_book/Tumorotek/Packages/">Packages</a><button aria-label="Collapse sidebar category &#x27;Packages&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/tk_book/Tumorotek/Packages/core/ConfigManager">core</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/AbstractListeController2">webapp</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/AbstractListeController2">AbstractListeController2</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/FicheConteneur">FicheConteneur</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/FicheDeplacerEmplacements">FicheDeplacerEmplacements</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/FicheImportTemplate">FicheImportTemplate</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/FichePrelevementStatic">FichePrelevementStatic</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/ListeEchantillon">ListeEchantillon extends AbstractListeController2</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/ListeStockages">ListeStockages</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/tk_book/Tumorotek/Packages/webapp/ProdDeriveRowRenderer">ProdDeriveRowRenderer</a></li></ul></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/tk_book/ZK/Annotations">ZK</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/tk_book/">Introduction</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/tk_book/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Tumorotek</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/tk_book/Tumorotek/Packages/"><span itemprop="name">Packages</span></a><meta itemprop="position" content="2"></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">webapp</span><meta itemprop="position" content="3"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">FicheImportTemplate</span><meta itemprop="position" content="4"></li></ul></nav><div class="theme-doc-markdown markdown"><header><h1>FicheImportTemplate</h1></header>
+<p>This class manages the import template functionality in the application. It handles the creation, editing, and management of import templates that define how external data should be imported into the system. It provides features for:</p>
+<ul>
+<li>
+<p>Creating and editing import templates</p>
+</li>
+<li>
+<p>Managing import columns and their configurations</p>
+</li>
+<li>
+<p>Handling file imports using these templates</p>
+</li>
+<li>
+<p>Managing associated entities and their relationships</p>
+</li>
+<li>
+<p>Tracking import history</p>
+</li>
+<li>
+<p>Supporting subderive (sub-product) template management</p>
+</li>
+<li>
+<p>Providing user interface controls for template manipulation</p>
+</li>
+<li>
+<p>Validating and processing import data</p>
+</li>
+<li>
+<p><strong><code>doAfterCompose(Component comp)</code></strong>: This method is called after composing the controller and initializing the associated component. It sets various properties and initializes lists of components.</p>
+</li>
+<li>
+<p><strong><code>setObject(TKdataObject obj)</code></strong>: Sets the object for the controller. It initializes lists and variables related to the import template and its associated entities.</p>
+</li>
+<li>
+<p><strong><code>cloneObject()</code></strong>: Creates a clone of the import template object.</p>
+</li>
+<li>
+<p><strong><code>getObject()</code></strong>: Retrieves the import template object.</p>
+</li>
+<li>
+<p><strong><code>getParentObject()</code></strong>: Retrieves the parent object. In this case, it always returns null.</p>
+</li>
+<li>
+<p><strong><code>setParentObject(TKdataObject obj)</code></strong>: Sets the parent object. In this case, it does nothing.</p>
+</li>
+<li>
+<p><strong><code>getObjectTabController()</code></strong>: Retrieves the object tab controller associated with the import template object.</p>
+</li>
+<li>
+<p><strong><code>setNewObject()</code></strong>: Sets a new import template object with default values and initializes lists and variables related to it.</p>
+</li>
+<li>
+<p><strong><code>switchToStaticMode()</code></strong>: Switches the controller to static mode, disabling certain components and setting labels based on the current state of the import template.</p>
+</li>
+<li>
+<p><strong><code>disableToolBar(boolean b)</code></strong>: Disables or enables the toolbar based on the provided boolean value. It also manages the visibility of the &quot;Add New Subderive&quot; button.</p>
+</li>
+<li>
+<p><strong><code>switchToCreateMode()</code></strong>: Switches the controller to create mode, preparing the UI for creating a new import template.</p>
+</li>
+<li>
+<p><strong><code>switchToEditMode()</code></strong>: Switches the controller to edit mode, allowing modifications to the import template.</p>
+</li>
+<li>
+<p><strong><code>getDeleteWaitLabel()</code></strong>: Retrieves the label to display when waiting for a deletion operation to complete.</p>
+</li>
+<li>
+<p><strong><code>onClick$addNewC()</code></strong>: Handles the click event for the &quot;Add New&quot; button, switching to create mode.</p>
+</li>
+<li>
+<p><strong><code>onClick$editC()</code></strong>: Handles the click event for the &quot;Edit&quot; button, switching to edit mode based on the type of import template (regular or subderive).</p>
+</li>
+<li>
+<p><strong><code>onClick$cancelC()</code></strong>: Handles the click event for the &quot;cancel&quot; button. It sets a boolean flag isSubderive to false and clears the data.</p>
+</li>
+<li>
+<p><strong><code>onClick$revertC()</code></strong>: Handles the click event for the &quot;revert&quot; button. It clears the constraints and calls the superclass&#x27;s onClick$revertC() method.</p>
+</li>
+<li>
+<p><strong><code>clearData()</code></strong>: Clears the data by clearing various data structures and calling clearConstraints(). It also calls the superclass&#x27;s clearData() method.</p>
+</li>
+<li>
+<p><strong><code>onClick$createC()</code></strong>: Handles the click event for the &quot;create&quot; button. It shows a busy message, echoes an &quot;onLaterCreate&quot; event, and performs some object manipulation tasks.</p>
+</li>
+<li>
+<p><strong><code>onClick$copyAllFields()</code></strong>: Handles the click event for the &quot;copyAllFields&quot; button. It logs information and performs some field copying tasks.</p>
+</li>
+<li>
+<p><strong><code>onLaterCreate()</code></strong>: Performs tasks after the &quot;create&quot; button click event. It creates a new object, clones it, sets the object, switches to static mode, and disables the toolbar.</p>
+</li>
+<li>
+<p><strong><code>createNewObject()</code></strong>: Creates a new object by updating the import template with data from various sources. It sets the order for import columns and calls the manager&#x27;s createObjectManager() method to update the object.</p>
+</li>
+<li>
+<p><strong><code>onClick$validateC()</code></strong>: Handles the click event for the &quot;validate&quot; button. It shows a busy message and echoes an &quot;onLaterUpdate&quot; event.</p>
+</li>
+<li>
+<p><strong><code>onLaterUpdate()</code></strong>: Performs tasks after the &quot;validate&quot; button click event. It updates the object, clones it, sets the object, and switches to static mode.</p>
+</li>
+<li>
+<p><strong><code>updateObject()</code></strong>: Updates the object by extracting data from the import template and associated entities. It sets the order for import columns and calls the manager&#x27;s updateObjectManager() method.</p>
+</li>
+<li>
+<p><strong><code>prepareDeleteObject()</code></strong>: Prepares the object for deletion by setting a deletion message.</p>
+</li>
+<li>
+<p><strong><code>removeObject()</code></strong>: Removes the object by calling the manager&#x27;s removeObjectManager() method.</p>
+</li>
+<li>
+<p><strong><code>setEmptyToNulls()</code></strong>: Sets empty values to null for specific fields in the import template.</p>
+</li>
+<li>
+<p><strong><code>setFieldsToUpperCase()</code></strong>: Converts field values to uppercase.</p>
+</li>
+<li>
+<p><strong><code>setFocusOnElement()</code></strong>: Sets the focus on the &quot;nomBox&quot; component.</p>
+</li>
+<li>
+<p><strong><code>getListeImportTemplate()</code></strong>: Retrieves the controller of the associated list component from the event.</p>
+</li>
+<li>
+<p><strong><code>onGetAddedObject()</code></strong>: Handles the event when an object is added. It adds the object to the associated list, retrieves required fields, and decorates import columns.</p>
+</li>
+<li>
+<p><strong><code>onGetRemovedObject()</code></strong>: Handles the event when an object is removed. It removes the object from the associated list, retrieves required fields, and updates components.</p>
+</li>
+<li>
+<p><strong><code>onClick$upChamp()</code></strong>: Moves a field up in the list by calling the upObject method, reloading the model, and scrolling the view.</p>
+</li>
+<li>
+<p><strong><code>onClick$downChamp()</code></strong>: Moves a field down in the list by calling the upObject method with the next field in the list.</p>
+</li>
+<li>
+<p><strong><code>upObject()</code></strong>: Performs the actual movement of objects within the list by swapping positions in the importColonnesDecorator list.</p>
+</li>
+<li>
+<p><strong><code>drawActionsForImport()</code></strong>: Determines whether the action buttons should be clickable based on the user&#x27;s admin privileges.</p>
+</li>
+<li>
+<p><strong><code>initEditableMode()</code></strong>: Prepares the form by populating choice lists and components based on the ImportTemplate object.</p>
+</li>
+<li>
+<p><strong><code>onClick$addChamp()</code></strong>: Adds a new field to the list by creating an ImportColonne object and updating the model.</p>
+</li>
+<li>
+<p><strong><code>onClick$deleteChamp()</code></strong>: Prompts for confirmation and removes a field from the list, including associated ImportColonne object if it exists.</p>
+</li>
+<li>
+<p><strong><code>onOpen$groupHistorique()</code></strong>: Retrieves the import history records for the importTemplate and updates the historiquesGrid component.</p>
+</li>
+<li>
+<p><strong><code>clearConstraints()</code></strong>: Clears all error messages related to constraints in the form.</p>
+</li>
+<li>
+<p><strong><code>onSelect$entitesBox()</code></strong>: Retrieves and decorates nullable fields based on the selected entity.</p>
+</li>
+<li>
+<p><strong><code>getAndDecorateNullableChampForEntite()</code></strong>: Collects nullable fields that can be added to an import and updates the model.</p>
+</li>
+<li>
+<p><strong><code>onSelect$champsBox()</code></strong>: Updates the selected field based on the user&#x27;s selection.</p>
+</li>
+<li>
+<p><strong><code>onClickNbPatients()</code></strong>: Retrieves the imported patients and updates the patient list in another controller.</p>
+</li>
+<li>
+<p><strong><code>onLaterAffichagePatients()</code></strong>: Handles the delayed execution of patient display and updates the patient list.</p>
+</li>
+<li>
+<p><strong><code>onClickNbPrelevements()</code></strong>: Retrieves the imported prelevements and updates the prelevement list.</p>
+</li>
+<li>
+<p><strong><code>onLaterAffichagePrelevements()</code></strong>: Displays the prelevements in the interface and updates the PrelevementController.</p>
+</li>
+<li>
+<p><strong><code>onClickNbEchantillons(Event event)</code></strong>: Triggers the display of the echantillons.</p>
+</li>
+<li>
+<p><strong><code>onLaterAffichageEchantillons()</code></strong>: Updates the list of echantillons in the EchantillonController.</p>
+</li>
+<li>
+<p><strong><code>onClickNbDerives(Event event)</code></strong>: Triggers the display of the prodDerives.</p>
+</li>
+<li>
+<p><strong><code>onLaterAffichageProdDerives()</code></strong>: Updates the list of prodDerives in the ProdDeriveController.</p>
+</li>
+<li>
+<p><strong><code>onClick$importer()</code></strong>: Handles file selection and data import using WorkbookFactory.</p>
+</li>
+<li>
+<p><strong><code>onLaterImport(Event e)</code></strong>: Handles the import of data and updates the user interface accordingly.</p>
+</li>
+<li>
+<p><strong><code>onClick$exporterHeader()</code></strong>: Creates and exports a workbook with imported header columns.</p>
+</li>
+<li>
+<p><strong><code>onOpen$groupEntites()</code></strong>: Updates the associated entities import component.</p>
+</li>
+<li>
+<p><strong><code>onClick$addNewSubderiveC()</code></strong>: Triggers the creation of a new subderive.</p>
+</li>
+<li>
+<p><strong><code>onLaterAddNewSubderive()</code></strong>: Handles the creation of a new subderive.</p>
+</li>
+<li>
+<p><strong><code>switchToCreateModeSubderive()</code></strong>: Switches to create mode for subderives.</p>
+</li>
+<li>
+<p><strong><code>switchToEditModeSubderive()</code></strong>: Switches to edit mode for subderives.</p>
+</li>
+<li>
+<p><strong><code>makeSubderiveHeaderCols(ImportTemplate it)</code></strong>: Creates a list of header columns for subderives.</p>
+</li>
+<li>
+<p><strong><code>getEntiteRenderer()</code></strong>: Provides the renderer for entities in a list box.</p>
+</li>
+<li>
+<p><strong><code>getColonnesRenderer()</code></strong>: Provides the colonnesRenderer attribute.</p>
+</li>
+<li>
+<p><strong><code>setColonnesRenderer(ImportColonneRowRenderer cRenderer)</code></strong>: Sets the colonnesRenderer attribute.</p>
+</li>
+<li>
+<p><strong><code>getNomConstraint()</code></strong>: Provides the nom constraint from ImportConstraints.</p>
+</li>
+<li>
+<p><strong><code>getDescriptionConstraint()</code></strong>: Provides the description constraint from ImportConstraints.</p>
+</li>
+<li>
+<p><strong><code>getEntitesAssociees()</code></strong>: Provides the list of associated entities.</p>
+</li>
+<li>
+<p><strong><code>setEntitesAssociees(List&lt;EntiteDecorator&gt; e)</code></strong>: Sets the list of associated entities.</p>
+</li>
+<li>
+<p><strong><code>getEntitesAssocieesImport()</code></strong>: Provides the EntitesAssocieesImport instance.</p>
+</li>
+<li>
+<p><strong><code>getImportColonnesDecorator()</code></strong>: Provides the list of import column decorators.</p>
+</li>
+<li>
+<p><strong><code>setImportColonnesDecorator(List&lt;ImportColonneDecorator&gt; i)</code></strong>: Sets the list of import column decorators.</p>
+</li>
+<li>
+<p><strong><code>getSelectedEntite()</code></strong>: Provides the selected entity.</p>
+</li>
+<li>
+<p><strong><code>setSelectedEntite(EntiteDecorator sEntite)</code></strong>: Sets the selected entity.</p>
+</li>
+<li>
+<p><strong><code>getChamps()</code></strong>: Provides the list of import field decorators.</p>
+</li>
+<li>
+<p><strong><code>setChamps(List&lt;ImportChampDecorator&gt; c)</code></strong>: Sets the list of import field decorators.</p>
+</li>
+<li>
+<p><strong><code>getSelectedChamp()</code></strong>: Provides the selected field.</p>
+</li>
+<li>
+<p><strong><code>setSelectedChamp(ImportChampDecorator selectedC)</code></strong>: Sets the selected field.</p>
+</li>
+<li>
+<p><strong><code>getImportColonnesToRemove()</code></strong>: Provides the list of columns to remove.</p>
+</li>
+<li>
+<p><strong><code>setImportColonnesToRemove(List&lt;ImportColonne&gt; iToRemove)</code></strong>: Sets the list of columns to remove.</p>
+</li>
+<li>
+<p><strong><code>getHistoriques()</code></strong>: Provides the list of import histories.</p>
+</li>
+<li>
+<p><strong><code>setHistoriques(List&lt;ImportHistorique&gt; h)</code></strong>: Sets the list of import histories.</p>
+</li>
+<li>
+<p><strong><code>getNbHistorique()</code></strong>: Provides the number of histories.</p>
+</li>
+<li>
+<p><strong><code>setNbHistorique(Integer nb)</code></strong>: Sets the number of histories.</p>
+</li>
+<li>
+<p><strong><code>getHistoriquesRenderer()</code></strong>: Provides the historiques renderer.</p>
+</li>
+<li>
+<p><strong><code>setHistoriquesRenderer(ImportHistoriqueRowRenderer hRenderer)</code></strong>: Sets the historiques renderer.</p>
+</li>
+<li>
+<p><strong><code>getCurrentEvent()</code></strong>: Provides the current event.</p>
+</li>
+<li>
+<p><strong><code>setCurrentEvent(Event current)</code></strong>: Sets the current event.</p>
+</li>
+<li>
+<p><strong><code>getUpdateTemplateLabelVisible()</code></strong>: Provides the visibility state of the template label.</p>
+</li>
+<li>
+<p><strong><code>getTitle()</code></strong>: Provides the title based on the isSubderive attribute.</p>
+</li>
+</ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/tk_book/Tumorotek/Packages/webapp/FicheDeplacerEmplacements"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">FicheDeplacerEmplacements</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/tk_book/Tumorotek/Packages/webapp/FichePrelevementStatic"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">FichePrelevementStatic</div></a></nav></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
