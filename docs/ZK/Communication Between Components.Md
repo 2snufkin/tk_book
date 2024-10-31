@@ -1,4 +1,6 @@
 # Communication Between Components in ZK Framework
+
+// to do: edit it
 see my forum question
 https://forum.zkoss.org/question/115304/communication-between-viewmodel-and-composer/
 ## Communication via Global Command

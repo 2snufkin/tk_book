@@ -164,4 +164,4 @@ By using enums, the code becomes more readable, maintainable, and less prone to 
 
 ## Summary
 
-This document outlined how to conditionally perform actions based on user permissions for modifying "Echantillon" and consulting "Stockage". By using the `getDroitOnAction` function, we can ensure that actions are only performed by users with the appropriate rights. Additionally, using enums instead of hard-coded strings improves code quality and maintainability. The provided examples demonstrate how to implement these best practices in a practical scenario.
+By using the `getDroitOnAction` function, we can ensure that actions are only performed by users with the appropriate rights. Additionally, using enums instead of hard-coded strings improves code quality and maintainability. The provided examples demonstrate how to implement these best practices in a practical scenario.

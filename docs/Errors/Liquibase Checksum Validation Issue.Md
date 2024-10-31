@@ -1,49 +1,112 @@
 # Liquibase Checksum Validation Issue
 
-Checksum validation issues in Liquibase can be resolved by updating the checksums in the `DATABASECHANGELOG` table to match the modified changesets. It's crucial to carefully review and document any intentional changes made to the changelog files to maintain consistency in the database schema evolution process.
+Checksum validation issues in Liquibase can be resolved by updating the checksums in the `DATABASECHANGELOG` table to match the modified changesets. This document outlines common causes, solutions, and best practices for handling these issues.
 
-## Liquibase Checksum Validation Issue and Resolution
+## Problem Overview
 
-### Problem Overview
-Liquibase uses checksums to ensure the consistency of changesets in your database schema. When the content of a changeset is modified without updating the corresponding checksum, Liquibase will detect a validation failure during the update process. This validation failure is indicated by an error message similar to the following:
+Liquibase maintains database schema version control by calculating checksums for each changeset. When a changeset's content is modified without properly updating its checksum, Liquibase throws a validation error that looks like this:
+
 ```
 liquibase.exception.ValidationFailedException: Validation Failed:
-  X change sets check sum
-  ...
+     1 change sets check sum
+     changelog.xml::1::author was: 8:d9cc830bd2a1f43eb6d0125891177d19 but is now: 8:f5e9ad5c50f8378269c4e934eece1b20
 ```
 
-### Causes of the Issue
-The checksum validation issue typically arises when changesets are intentionally modified without updating the checksums. This can happen during development or schema evolution when SQL statements within a changeset are added, modified, or removed.
+## Common Causes
 
-### Resolution Steps
-To resolve the checksum validation issue, follow these steps:
+1. **Manual Changeset Modifications:**
+   - Direct edits to changelog files without proper version control
+   - Whitespace or formatting changes
+   - Changes to SQL statements within existing changesets
 
-1. **Identify Changes:**
-   - Open each changelog file mentioned in the error message.
-   - Identify the changes made to the SQL statements within each changeset.
+2. **Environment Differences:**
+   - Line ending differences (CRLF vs LF)
+   - Character encoding inconsistencies
+   - Different database versions across environments
 
-2. **Update Checksums:**
-   - If you intentionally modified the changesets, update the checksums manually to match the new content.
-   - Use the following SQL command to update the checksum in the `DATABASECHANGELOG` table for the affected changeset.
-     ```
-     UPDATE DATABASECHANGELOG SET MD5SUM='8:NEW_CHECKSUM_VALUE' WHERE MD5SUM='8:OLD_CHECKSUM_VALUE';
-     ```
-     Replace `NEW_CHECKSUM_VALUE` with the new checksum and `OLD_CHECKSUM_VALUE` with the old checksum for the changeset.
+## Resolution Methods
 
-3. **Run SQL Command:**
-   - Open your command prompt (CMD) on Windows or terminal on Linux/Mac.
-   - Type `mysql -u your_username -p` and press Enter.
-   - Once logged in, switch to your database using `USE your_database_name`.
-   - Run your UPDATE SQL statement.
+### Method 1: Update Checksums via SQL
 
----
-
-Caused by: liquibase.exception.DatabaseException: This function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled (you might want to use... 
-
-**Adjust log_bin_trust_function_creators:** 
-You may need to adjust MySQL server setting `log_bin_trust_function_creators`. This setting determines whether non-deterministic functions can execute in a binary logging context.
-You can set it dynamically with:
+```sql
+UPDATE DATABASECHANGELOG 
+SET MD5SUM = '8:new_checksum_value' 
+WHERE ID = 'changeset_id' 
+AND AUTHOR = 'author_name' 
+AND FILENAME = 'changelog_file.xml';
 ```
+
+### Method 2: Using Liquibase Commands
+
+```bash
+# Clear all checksums
+liquibase clearChecksums
+
+# Update database to recalculate checksums
+liquibase update
+```
+
+### Method 3: Using `validCheckSum` Tag
+
+```xml
+<changeSet id="1" author="dev">
+    <validCheckSum>8:old_checksum</validCheckSum>
+    <validCheckSum>8:new_checksum</validCheckSum>
+    <!-- changeset content -->
+</changeSet>
+```
+
+## Best Practices
+
+1. **Version Control:**
+   - Always use source control for changelog files
+   - Document changeset modifications in commit messages
+   - Use meaningful changeset IDs and descriptions
+
+2. **Change Management:**
+   - Avoid modifying existing changesets
+   - Create new changesets for schema modifications
+   - Use `runOnChange="true"` for volatile objects like views or procedures
+
+3. **Binary Logging Considerations:**
+
+If you encounter the error:
+```
+liquibase.exception.DatabaseException: This function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled
+```
+
+You have two options:
+
+a) **Recommended:** Mark your functions appropriately:
+```sql
+CREATE FUNCTION my_function() 
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    -- function logic
+END;
+```
+
+b) **Alternative:** Enable trust for function creators:
+```sql
 SET GLOBAL log_bin_trust_function_creators = 1;
 ```
-Be aware that enabling this setting allows non-deterministic functions creation which may have security implications. Understand these implications before making any change.
+
+> ⚠️ **Warning:** Enabling `log_bin_trust_function_creators` globally may have security implications. Use with caution in production environments.
+
+## Troubleshooting Tips
+
+1. **Verify Changes:**
+   - Compare changeset content across environments
+   - Check for hidden characters or encoding issues
+   - Review recent changelog modifications
+
+2. **Database Consistency:**
+   - Ensure all environments use the same database version
+   - Verify changelog execution order
+   - Check for environment-specific configurations
+
+3. **Logging and Monitoring:**
+   - Enable detailed Liquibase logging
+   - Monitor changeset execution history
+   - Document all manual interventions

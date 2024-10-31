@@ -91,6 +91,3 @@ You can include tests in your Maven build configuration using plugins like maven
     </plugins>
 </build>
 
-```
-
-These steps provide a basic structure for setting up DAOs, Services, and tests in an older Spring project using XML configuration. Adjust package names...
