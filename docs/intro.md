@@ -1,3 +1,8 @@
+---
+slug: /
+title: Introduction
+---
+
 # Introduction
 
 Welcome to the Tumorotek Project Documentation Hub. This resource has been thoughtfully structured to support both developers, managers and non-developers in understanding and contributing to the Tumorotek project more effectively. I’ve organized the content into six main sections to cover essential aspects of development, best practices, and security, each aimed at helping you navigate the project with ease.
@@ -24,17 +29,6 @@ Welcome to the Tumorotek Project Documentation Hub. This resource has been thoug
 
 
 I hope this documentation serves as a useful, evolving guide to support your work on the Tumorotek project. Each section is here to help simplify processes, foster best practices, and make collaboration easier for everyone.
-
-
-## About Me
-I am a Full Stack Developer with expertise in Python, Java, TypeScript, and JavaScript. With my dedication to clean, maintainable code and passion for simplicity in design, I integrate DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles into every project. This approach not only reduces development time but also enhances collaboration and efficiency, saving both time and resources.
-
-Throughout my experience with SESAN and Nat System, I have built robust applications, provided effective debugging solutions, and contributed to project documentation, ensuring code is accessible and scalable. I value continuous learning and stay updated on emerging technologies, eager to share insights and grow alongside peers in the industry.
-
-
-The purpose of this technical document base is twofold:
-1. To serve as a comprehensive knowledge base for the Tumorotek project, providing developers and non-developers with best practices, guidelines, and technical documentation
-2. To act as the primary reference for troubleshooting and problem-solving during development and maintenance
 
 
 ## How to Use This Documentation
@@ -69,7 +63,7 @@ The TK® software is a tool for managing collections of biological samples. It i
   - Exporting to catalogs (such as Cancéropôle Grand Sud-Ouest, BIOCAP, biobanks, etc.)
   
 ### Administration of the software:
-
+Administrators of the software can:
 - Account and authorization management
 - Collaboration settings
 - Storage structure management
@@ -79,3 +73,7 @@ The TK® software is a tool for managing collections of biological samples. It i
 - Printing barcode labels
 
 
+## About Me
+I am a Full Stack Developer with expertise in Python, Java, TypeScript, and JavaScript. With my dedication to clean, maintainable code and passion for simplicity in design, I integrate DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles into every project. This approach not only reduces development time but also enhances collaboration and efficiency, saving both time and resources.
+
+Throughout my experience as a developer, I have helped building robust applications, provided effective debugging solutions, and contributed to project documentation, ensuring code is accessible and scalable. I value continuous learning and stay updated on emerging technologies, eager to share insights and grow alongside peers in the industry.

@@ -24,7 +24,7 @@ const config = {
   organizationName: '2snufkin', // Usually your GitHub org/user name.
   projectName: 'tk_book', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -42,8 +42,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          routeBasePath: '/',
+          path: 'docs',
         },
         blog: false,
 
@@ -64,7 +64,7 @@ const config = {
         logo: {
           alt: 'My Site Logo',
           src: 'img/favicon.png',
-          href: '/docs/', // This makes the logo itself link to /docs/
+          href: '/',
 
         },
         items: [

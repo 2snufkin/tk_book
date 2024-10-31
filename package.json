@@ -39,6 +39,9 @@
     ]
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=20.0"
+  },
+  "resolutions": {
+    "punycode": "^2.3.1"
   }
 }

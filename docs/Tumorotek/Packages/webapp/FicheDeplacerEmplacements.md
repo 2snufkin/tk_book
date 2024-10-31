@@ -1,108 +1,236 @@
 # FicheDeplacerEmplacements
 
-## Variables:
+This class manages the movement and storage operations of biological samples within the storage system. It provides a comprehensive interface for:
+- Moving samples between different storage locations
+- Managing the storage and retrieval (destocking) of samples
+- Handling multiple storage modes (selection, movement, storage, destocking)
+- Creating visual representations of storage locations
+- Managing the drag-and-drop functionality for sample movement
+- Generating printable documents for storage operations
+- Validating storage operations and handling errors
+- Maintaining the state of storage locations and their contents
 
-deplacements: A list of EmplacementDecorator objects.
-deplacementsRestants: A list of EmplacementDecorator objects.
-emplacementDepart: A list of EmplacementDecorator objects.
-emplacementReserves: A list of EmplacementDecorator objects.
-selectedEmplacement: An EmplacementDecorator object representing the selected emplacement.
-emplacementsDestDep: A Hashtable mapping EmplacementDecorator objects to EmplacementDecorator objects.
+## Variables
 
-echantillons: A list of Echantillon objects.
-derives: A list of ProdDerive objects.
+```java
+private List<EmplacementDecorator> deplacements;
+private List<EmplacementDecorator> deplacementsRestants;
+private List<EmplacementDecorator> emplacementDepart;
+private List<EmplacementDecorator> emplacementReserves;
+private EmplacementDecorator selectedEmplacement;
+private Hashtable<EmplacementDecorator, EmplacementDecorator> emplacementsDestDep;
+private List<Echantillon> echantillons;
+private List<ProdDerive> derives;
+private List<Emplacement> emplacementsFinaux;
+private boolean selectionMode;
+private boolean deplacementMode;
+private boolean stockerMode;
+private boolean destockageMode;
+private String mode;
+private String badTerminaleError;
+private List<String> lignes;
+private List<String> colonnes;
+private Integer numeroLigne;
+private Integer numeroColonne;
+private String entiteReservee;
+private String returnMethode;
+private String path;
+private String typeEntite;
+```
 
-emplacementsFinaux: A list of Emplacement objects.
+## Methods
 
-selectionMode: A boolean indicating whether the mode is selection.
-deplacementMode: A boolean indicating whether the mode is deplacement.
-stockerMode: A boolean indicating whether the mode is stocker.
-destockageMode: A boolean indicating whether the mode is destockage.
-mode: A string representing the mode.
-badTerminaleError: A string representing an error message.
-lignes: A list of strings representing lines.
-colonnes: A list of strings representing columns.
-numeroLigne: An integer representing a line number.
-numeroColonne: An integer representing a column number.
-entiteReservee: A string representing a reserved entity.
-returnMethode: A string representing a return method.
-path: A string representing a path.
-typeEntite: A string representing the type of entity.
+- ```java
+  void switchToDestockageMode()
+  ```
+  Switches to destocking mode and updates component visibility.
 
-## Methods:
+- ```java
+  void onClick$validateSelection()
+  ```
+  Validates selection and switches to deplacement mode if successful.
 
-- **doAfterCompose(final Component comp)**: Overrides the doAfterCompose method of the parent class. It initializes the component and loads the data.
+- ```java
+  void onClick$validateDeplacement()
+  ```
+  Shows busy indicator and triggers onLaterDeplacement event.
 
-- **getObjectTabController()**: Overrides the getObjectTabController method of the parent class. It returns the object tab controller.
+- ```java
+  void onClick$validateStockage()
+  ```
+  Validates storage and triggers appropriate stockage event.
 
-- **switchToSelectionMode(final boolean back, final Map<ScanTube, TKStockableObject> mismatches)**: Switches the mode to selection. Takes a boolean parameter indicating whether it is a back operation and a map of mismatches. It updates the visibility and initializes the data.
+- ```java
+  void stockExistingObjects()
+  ```
+  Saves existing objects in storage and updates database.
 
-- **switchToDeplacerMode()**: Switches the mode to deplacement. It updates the visibility and initializes the data.
+- ```java
+  Hashtable<TKStockableObject, Emplacement> stockNewObjects()
+  ```
+  Saves new objects in storage and returns mapping of objects to locations.
 
-- **switchToStockerMode(final List<Echantillon> echans, final List<ProdDerive> der, final String p, final String methode, final List<Emplacement> reservation)**: Switches the mode to stocker. Takes a list of echantillons, a list of derives, a string representing a path, a string representing a method, and a list of reservations. It updates the visibility and initializes the data.
+- ```java
+  void onDropImage(DropEvent e)
+  ```
+  Handles drag and drop operations for storage locations.
 
-- **switchToDestockageMode**: This method is called to switch the mode of the stock to "destocking" mode. It updates the visibility of certain components and initializes the display accordingly.
+- ```java
+  void updateEchantillons()
+  ```
+  Updates Echantillon objects' attributes after storage operations.
 
-- **onClick$validateSelection**: This method is triggered when the user clicks on the "validate selection" button. It performs validation checks and throws an exception if the selection is not valid. If the validation is successful, it calls the switchToDeplacerMode method.
+- ```java
+  void updateProdDerives()
+  ```
+  Updates ProdDerive objects' attributes after storage operations.
 
-- **onClick$validateDeplacement**: This method is called when the user clicks on the "validate movement" button. It shows a busy indicator, and then asynchronously triggers the "onLaterDeplacement" event.
+- ```java
+  void destockEmplacements()
+  ```
+  Handles removal of objects from storage locations.
 
-- **onClick$validateStockage**: This method is invoked when the user clicks on the "validate storage" button. It shows a busy indicator and triggers either the "onLaterStockageNewObjects" or "onLaterStockageExistingObjects" event based on the conditions.
+- ```java
+  void definirTerminaleDestination()
+  ```
+  Updates UI based on selected terminal destination.
 
-- **onClick$validateDestockage**: This method is called when the user clicks on the "validate destocking" button. It shows a busy indicator and triggers the "onLaterDestockage" event.
+- ```java
+  void initEmplacements()
+  ```
+  Initializes storage locations list from database.
 
-- **onClick$cancelSelection, onClick$cancelDeplacement, onClick$cancelStockage, onClick$cancelDestockage**: These methods handle the cancellation of various operations by resetting the state of the components and lists.
+- ```java
+  void initModelisation()
+  ```
+  Creates graphical representation of storage system.
 
-- **onSelect$lignesBox, onSelect$colonnesBox**: These methods handle the selection of a row or column in the user interface.
+- ```java
+  Component createImage()
+  ```
+  Generates graphical element for storage location representation.
 
-- **onClick$selectCoordonnee**: This method is called when the user clicks on the "select coordinates" button. It retrieves the position based on the selected row and column and performs actions based on the current mode (selection, movement, storage).
+- ```java
+  void descendreFenetre()
+  ```
+  Handles window scrolling to specific position using JavaScript.
 
-- **onLaterStockageExistingObjects, onLaterStockageNewObjects, onLaterDeplacement, onLaterDestockage**: These methods handle the asynchronous execution of stock-related operations, such as storage, movement, and destocking. They update the user interface and perform additional actions based on the results.
+- ```java
+  void onClickImage(Event e)
+  ```
+  Processes image click events based on current mode.
 
-- **stockExistingObjects()**: This method is used to save existing objects in storage. It retrieves the necessary data, such as entities, IDs, and locations, and updates the database accordingly. It also triggers updates in the user interface to reflect the changes.
+- ```java
+  void handleImage(Div img)
+  ```
+  Processes clicked image based on current operation mode.
 
-- **stockNewObjects()**: This method is similar to stockExistingObjects() but is used for saving new objects in storage. It returns a Hashtable containing the saved objects and their corresponding locations.
+- ```java
+  void selectImageInSelectionMode(Div img)
+  ```
+  Handles image selection in selection mode.
 
-- **updateEchantillons()**: This method is called by stockExistingObjects() to update specific attributes of Echantillon objects after they have been stored. It updates the Echantillon objects' status, location, and other relevant information.
+- ```java
+  void selectImageIndeplacementMode(Div img)
+  ```
+  Handles image selection in movement mode.
 
-- **updateProdDerives()**: Similar to updateEchantillons(), this method is called by stockExistingObjects() to update ProdDerive objects after they have been stored. It updates the ProdDerive objects' status, location, and other relevant information.
+- ```java
+  void selectImageInStockageMode(Div img)
+  ```
+  Handles image selection in storage mode.
 
-- **destockEmplacements()**: This method is used to remove objects from storage. However, the implementation is currently commented out, so it doesn't perform any actions.
+- ```java
+  void selectImageInDestockageMode(Div img)
+  ```
+  Handles image selection in destocking mode.
 
-- **definirTerminaleDestination()**: This method is called when a user selects a destination terminal. It updates the user interface based on the selected terminal, such as showing error messages or updating the model of the terminal.
+- ```java
+  void onClick$deleteDeplacement(Event event)
+  ```
+  Removes selected movement and updates UI.
 
-- **initEmplacements()**: This method initializes the list of locations (emplacements) in the storage system. It retrieves the emplacements from the database and creates corresponding decorator objects (EmplacementDecorator).
+- ```java
+  void deleteDeplacementInStockageMode(EmplacementDecorator emplacement)
+  ```
+  Removes displacement in storage mode.
 
-- **initModelisation()**: This method is responsible for creating a graphical representation (model) of the storage system. It generates the layout and structure of the storage container, including the boxes and their contents (objects).
+- ```java
+  void deleteDeplacementInDestockageMode(EmplacementDecorator emplacement)
+  ```
+  Removes displacement in destocking mode.
 
-- **createImage()**: This method creates an image representation of an emplacement (storage location). It generates a graphical element that corresponds to the emplacement, considering its state (empty or occupied) and the current mode of the application (stocking, destocking, etc.).
+- ```java
+  private void postDetachDeplacementEvent()
+  ```
+  Notifies parent controller of completed editing.
 
-- **descendreFenetre()**: This method is responsible for scrolling the window to a specific position identified by the id and idTop variables. It uses JavaScript to manipulate the scroll position of the element.
+- ```java
+  List<BoiteImpression> createBoitesDepart()
+  ```
+  Creates list of departure boxes for movements.
 
-- **onClickImage(Event e)**: This method is called when an image is clicked. It checks the mode (selection, movement, storage, destocking) and performs the corresponding action based on the clicked image.
+- ```java
+  List<BoiteImpression> createBoitesArrivee()
+  ```
+  Creates list of arrival boxes for movements.
 
-- **handleImage(Div img)**: This method is responsible for handling the clicked image based on the current mode. It selects the image if in selection mode, performs actions related to movement, storage, or destocking based on the mode, and updates the necessary data structures.
+- ```java
+  void createFileHtmlToPrintLaterStockage()
+  ```
+  Generates HTML file for printing storage operations.
 
-- **onDropImage(DropEvent e)**: This method is called when an image is dropped onto a target element. It retrieves the dragged and target images, performs certain operations based on their indexes, and then handles the images between those indexes.
+- ```java
+  void onClick$cancelSelection()
+  ```
+  Cancels current selection operation.
 
-- **selectImageInSelectionMode(Div img)**: This method is called when an image is selected in the selection mode. It adds or removes the selected image from the list of selected images and updates the corresponding UI elements.
+- ```java
+  void onClick$cancelDeplacement()
+  ```
+  Cancels current movement operation.
 
-- **selectImageIndeplacementMode(Div img)**: This method is called when an image is selected in the movement mode. It handles the movement of images between different positions and updates the necessary data structures and UI elements.
+- ```java
+  void onClick$cancelStockage()
+  ```
+  Cancels current storage operation.
 
-- **selectImageInStockageMode(Div img)**: This method is called when an image is selected in the storage mode. It handles the storage of images in empty destinations and updates the necessary data structures and UI elements.
+- ```java
+  void onClick$cancelDestockage()
+  ```
+  Cancels current destocking operation.
 
-- **selectImageInDestockageMode(Div img)**: This method is called when an image is selected in the destocking mode. It adds or removes the selected image from the list of images to be destocked and updates the corresponding UI elements.
+- ```java
+  void onSelect$lignesBox()
+  ```
+  Handles row selection in storage grid.
 
-- **onClick$deleteDeplacement(Event event)**: This method is called when the delete button associated with a movement is clicked. It removes the selected movement from the list of movements and updates the UI accordingly.
+- ```java
+  void onSelect$colonnesBox()
+  ```
+  Handles column selection in storage grid.
 
-- **deleteDeplacementInStockageMode**: This method is used to delete a displacement in storage mode. It takes an EmplacementDecorator object as a parameter and performs various operations to remove the displacement from the list of movements.
+- ```java
+  void onClick$selectCoordonnee()
+  ```
+  Processes coordinate selection based on current mode.
 
-- **deleteDeplacementInDestockageMode**: This method is similar to the previous one but is used for deleting a displacement in destocking mode. It also takes an EmplacementDecorator object as a parameter and removes it from the list of movements.
+- ```java
+  void onLaterStockageExistingObjects()
+  ```
+  Handles asynchronous storage of existing objects.
 
-- **postDetachDeplacementEvent**: This private method is called to notify the general controller of the tab that the editing is done. It uses the Events class to post an event named "onDeplacementDone" to the parent window.
+- ```java
+  void onLaterStockageNewObjects()
+  ```
+  Handles asynchronous storage of new objects.
 
-- **createBoitesDepart**: This method creates a list of departure boxes for the movements. It iterates over the deplacements list, checks if each movement has a destination, and creates a BoiteImpression object for each unique box encountered. It fills in various attributes of the box, such as titles, legends, instructions, elements, and positions.
+- ```java
+  void onLaterDeplacement()
+  ```
+  Handles asynchronous movement operations.
 
-- **createBoitesArrivee**: This method is similar to createBoitesDepart but creates a list of arrival boxes for the movements. It iterates over the deplacements list, checks if each movement has a destination, and creates a BoiteImpression object for each unique box encountered. It fills in the attributes of the box as in the previous method.
-
-- **createFileHtmlToPrintLaterStockage**: This method is responsible for creating an HTML file for later printing. It checks if there are any elements to store (deplacements list is not empty) and then creates an XML document structure using JDOM. It adds pages, titles, and box information to the XML document. Finally, it converts the XML document to an HTML file and sends it to the user for printing.
+- ```java
+  void onLaterDestockage()
+  ```
+  Handles asynchronous destocking operations.
