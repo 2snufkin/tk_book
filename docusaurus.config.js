@@ -18,6 +18,8 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/tk_book/',
   baseUrlIssueBanner: true, // Enable this banner to detect baseUrl issues
+  trailingSlash: true,   // A fix the trailing slash warning
+
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
