@@ -1,4 +1,5 @@
 ## Naming Conventions
+Naming conventions are crucial for maintaining code readability, consistency, and maintainability. While developers should follow these conventions, they should also use their judgment - if following a convention would make the code less clear or harder to understand, it's acceptable to deviate from it. The primary goal is to write clear, maintainable code that other developers can easily comprehend.
 
 
 ### Naming Conventions
@@ -21,8 +22,7 @@
 - `sauvegarderPatient()` - Technical operation should use English
 - `validateDonnees()` - Technical validation should use English
 
-##### Note on Language Mixing
-- `getEchantillonById()` - Inconsistent mix of English/French
+
 
 While mixing English and French in code is generally not recommended as it:
 - Creates cognitive overhead when switching between languages
