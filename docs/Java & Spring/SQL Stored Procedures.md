@@ -223,7 +223,7 @@ Include the SQL changelog file in your main Liquibase changelog XML file.
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+         qqhttp://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include file="db/changelog/changes/v1.0/create_customer_procedures.sql"/>
 
