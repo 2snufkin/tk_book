@@ -59,11 +59,11 @@ END;
 
 Liquibase is a database schema change management tool. To create a stored procedure using Liquibase:
 
-1. Create a new changeset in your Liquibase changelog file.
+    Create a new changeset in your Liquibase changelog file.
 
-2. Use the `<createProcedure>` tag or `<sql>` tag for more complex procedures.
+    Use the <createProcedure> tag or <sql> tag for more complex procedures.
 
-Example using `<createProcedure>`:
+Example using <createProcedure>:
 
 ```xml
 <changeSet id="create-procedure-example" author="junior-dev">
@@ -75,7 +75,7 @@ Example using `<createProcedure>`:
     </createProcedure>
 </changeSet>
 ```
-Example using `<sql>` tag (recommended for complex procedures):
+Example using <sql> tag (recommended for complex procedures):
 
 ```xml
 <changeSet id="create-complex-procedure" author="junior-dev">

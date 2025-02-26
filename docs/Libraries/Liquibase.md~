@@ -1,3 +1,6 @@
+Here's a structured version of the provided information, condensed to follow DRY (Don’t Repeat Yourself) principles:
+
+```markdown
 # Liquibase
 
 Liquibase is an open-source library for managing and applying database schema changes across environments in a systematic and version-controlled manner. It supports various formats (XML, YAML, JSON, SQL) for defining changes and ensures reliable deployments with rollback and audit capabilities.
@@ -44,19 +47,6 @@ Liquibase applies database changes by reading the changelog file and updating th
 3. **Change Application**: Executes pending changes.
 4. **Record Keeping**: Updates `DATABASECHANGELOG` with applied changes.
 5. **Lock Release**: Clears `DATABASECHANGELOGLOCK`.
-
-- Tomcat starts and begins deploying your web application
-- Your application's context is initialized 
-- During context initialization, Liquibase is triggered (via Spring or your custom code)
-- Liquibase Connects to your database
-- Liquibase Checks the DATABASECHANGELOG table to see what changesets have already been applied
-- Liquibase Compares that with your changelog master file
-- Liquibase Applies any new changesets that haven't been run yet
-- Liquibase Updates the DATABASECHANGELOG table with records of the newly applied changes
-
-
-Your application continues initializing other components
-Tomcat completes deployment and starts handling requests
 
 ### Running Commands
 To run Liquibase, ensure that the `liquibase.properties` file has correct database configurations. Then, you can execute commands such as:
